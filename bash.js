@@ -4,14 +4,20 @@ process.stdout.write('prompt > ');
 
 process.stdin.on('data', data => {
   const cmd = data.toString().trim();
-  let output = '';
   if (cmd === 'pwd') {
     //get the directory and stdout that
-    output = pwd();
+    pwd();
   } else if (cmd === 'ls') {
-    output = ls();
+    ls();
+  } else {
+    process.stdout.write('not found');
+    process.stdout.write('prompt > ');
   }
 
-  process.stdout.write(output);
-  process.stdout.write('\nprompt > ');
 });
+
+// CAN CREATE A UTILITY FUNCTION TO AVOID THE REDUNDANCY
+// const done = (str) => {
+//   process.stdout.write(str);
+//   process.stdout.write('prompt > ');
+// }

@@ -1,12 +1,12 @@
 const fs = require('fs');
 
 module.exports = () => {
-  let ret = fs.readdirSync('./', 'utf8', (err, files) => {
+  fs.readdir('./', 'utf8', (err, files) => {
     if (err) {
       throw err;
     } else {
-      return files;
+      process.stdout.write(files.join('\n'));
+      process.stdout.write('\n prompt > ');
     }
   });
-  return ret.join('\t');
 };
